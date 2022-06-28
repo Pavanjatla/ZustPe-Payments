@@ -96,7 +96,7 @@ body{
   top: 0;
   left: 0;
   height: 100%;
-  width: 100%;
+  width: 90%;
   z-index: -1;
   transform: translate(0.7rem,0.8rem);
 
@@ -913,6 +913,7 @@ footer p a {
 .company{
   margin-right: 40%;
 }
+
   
 }
 
