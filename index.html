@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mockup</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
+
+    <script>
+        window.onload = function () {
+        
+        var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            title:{
+                text: "",
+                fontFamily: "arial black",
+                fontColor: "black"
+            },
+            axisX: {
+                interval: 10,
+                intervalType:"year"
+            },
+            axisY:{
+                valueFormatString:"$#0bn",
+                gridColor: "#B6B1A8",
+                tickColor: "#B6B1A8"
+            },
+            toolTip: {
+                shared: true,
+                content: toolTipContent
+            },
+            data: [{
+                type: "stackedColumn",
+                showInLegend: true,
+                color: "#041e85",
+                name: "Employer: K 25,000",
+                dataPoints: [
+                    { y: 6.75, x: new Date(20,0) },
+                    { y: 8.57, x: new Date(30,0) },
+                    { y: 10.64, x: new Date(40,0) },
+                    { y: 13.97, x: new Date(50,0) },
+                    { y: 15.42, x: new Date(60,0) },
+                    { y: 17.26, x: new Date(70,0) },
+                    { y: 20.26, x: new Date(80,0) }
+                ]
+                },
+                {        
+                    type: "stackedColumn",
+                    showInLegend: true,
+                    name: "Employee K 15,000",
+                    color: "#0b36e0",
+                    dataPoints: [
+                        { y: 6.82, x: new Date(20,0) },
+                        { y: 9.02, x: new Date(30,0) },
+                        { y: 11.80, x: new Date(40,0) },
+                        { y: 14.11, x: new Date(50,0) },
+                        { y: 15.96, x: new Date(60,0) },
+                        { y: 17.73, x: new Date(70,0) },
+                        { y: 21.5, x: new Date(80,0) }
+                    ]
+                },
+                {        
+                    type: "stackedColumn",
+                    showInLegend: true,
+                    name: "Total Interest K 1,00,000",
+                    color: "#6e87eb",
+                    dataPoints: [
+                        { y: 8.44, x: new Date(20,0) },
+                        { y: 10.58, x: new Date(30,0) },
+                        { y: 14.41, x: new Date(40,0) },
+                        { y: 16.86, x: new Date(50,0) },
+                        { y: 10.64, x: new Date(60,0) },
+                        { y: 21.32, x: new Date(70,0) },
+                        { y: 26.06, x: new Date(80,0) }
+                    ]
+            }]
+        });
+        chart.render();
+        
+        function toolTipContent(e) {
+            var str = "";
+            var total = 0;
+            var str2, str3;
+            for (var i = 0; i < e.entries.length; i++){
+                var  str1 = "<span style= \"color:"+e.entries[i].dataSeries.color + "\"> "+e.entries[i].dataSeries.name+"</span>: $<strong>"+e.entries[i].dataPoint.y+"</strong>bn<br/>";
+                total = e.entries[i].dataPoint.y + total;
+                str = str.concat(str1);
+            }
+            str2 = "<span style = \"color:DodgerBlue;\"><strong>"+(e.entries[0].dataPoint.x).getFullYear()+"</strong></span><br/>";
+            total = Math.round(total * 100) / 100;
+            str3 = "<span style = \"color:Tomato\">Total:</span><strong> $"+total+"</strong>bn<br/>";
+            return (str2.concat(str)).concat(str3);
+        }
+        
+        }
+        </script>
+
+
+</head>
+<body>
+
+    <div class="wrapper container-fluid">
+        <div class="sidebar">
+               <img src="imgs/Capture.PNG" alt="logo" class="logo">
+                <li><a href="#"><i class="fas fa-search"></i></a></li>
+                <li><a href="#"><i class="fas fa-home"></i></a></li>
+                <li><a href="#"><i class="fas fa-address-card"></i></a></li>
+                <li><a href="#"><i class="fas fa-list"></i></a></li>
+                <li><a href="#"><i class="fas fa-user"></i></a></li>
+            
+            <div class="social_media">
+                
+                <img src="imgs/exit1.PNG" alt="logo" class="exit">
+                <a href="#"><i class="fas fa-bell"></i></a>
+            </div>
+        </div>
+           <!-- mobile navigation -->
+            <div class="navbar fixed-bottom bg-light d-lg-none d-flex">
+                
+                <li><a href="#"><i class="fas fa-home active"></i></a></li>
+                <li><a href="#"><i class="fas fa-address-card"></i></a></li>
+                <li><a href="#"><i class="fas fa-list"></i></a></li>
+                <li><a href="#"><i class="fas fa-user"></i></a></li>
+                <li><a href="#"><i class="fas fa-search"></i></a></li>
+
+            </div>
+    </div>
+
+ 
+
+    <section class="first">
+        <header>
+            <div class="pic_name">
+                <img src="imgs/cropped-Profile-Picture-Round-Color.png" alt="pp" class="propic">
+                <div class="name">
+                    <h3>Hello Mike,</h2>
+                    <h4>Welcome back</h3>
+                </div>
+
+            </div>
+            <div class="money">
+                <p>Today</p>
+                <div class="ab">
+                    <h3>$69000</h3>
+                    <p class="abb">Account balance</p>
+                </div>
+                <div class="ti_yc">
+                    <div class="yc">
+                        <h3>$14000</h3>
+                        <p>Year to date Contribution</p>
+                    </div>
+                    <div class="yc">
+                        <h3>$1300</h3>
+                        <p>Total interest</p>
+                    </div>
+                </div>
+                
+                
+            </div>
+            <button type="button" class="btn btn-primary firstbtn">I want to    <i class="fas fa-caret-down"></i></i></button>
+
+            <div class="Transactions">
+                <h3>Recent Transactions</h3>
+                <div class="details">
+                    <p class="date">2020-08-07</p>
+                    <p class="mess">Withdrawal transfer to bank - XXX11</p>
+                    <hr>
+                    <p class="date">2021-09-07</p>
+                    <p class="mess">Withdrawal transfer to bank - XXX22</p>
+                    <hr>
+                    <p class="date">2020-10-21</p>
+                    <p class="mess">Withdrawal transfer to bank - XXX33</p>
+                    <hr>
+
+                </div>
+
+            </div>
+        </header>
+    </section>
+    <section class="second">
+        <main class="con">
+            <div class="income">
+                <p>Retirement Income</p>
+                <h3>Starting year 2056</h3>
+                <div class="target">
+                    <div>
+                        <h3>$300,000</h3>
+                        <p class="des">My Goal</p>
+                        <hr class="sh">
+                    </div>
+                    <div class="goal">
+                        <div>
+                            <h3>59%</h3>
+                            <p class="desg">Goal Acheived</p>
+                            <hr class="sh">
+                        </div>
+                        <div>
+                            <h3>300</h3>
+                            <p class="dese">Est monthly Income</p>
+                            <hr class="sh ">
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+
+        </main>
+        <div class="graph">
+            <h5>Contributions Overtime</h5>
+            <div id="chartContainer"  style="height: 350px; width: 53%;"></div>
+            <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        </div>
+
+        <div class="peers">
+            <div class="intro">
+                <h5>How do I compare to my peers</h5>
+                <h6>These Numbers Respresent current Goal achievement</h6>
+            </div>
+            <div class="compare">
+                <div class="per_details">
+                    <li>Age : under 30</li>
+                    <hr>
+                    <li>Salary : K20-K30</li>
+                    <hr>
+                    <li>Gender : Male</li>
+                </div>
+                <div class="m_container">
+                    <div class="container">
+                        <div class="circular-progress">
+                            <div class="value-container"></div>
+                        </div>
+                        <p>Average</p>
+                    </div>
+                    
+                    <div class="container1">
+                        <div class="circular-progress1">
+                            <div class="value-container1">0%</div>
+                        </div>
+                        <p class="top">Top</p>
+                    </div>
+
+                    <div class="container2">
+                        <div class="circular-progress2">
+                          <div class="value-container2">0%</div>
+                        </div>
+                        <p class="me">Me</p>
+                    </div> 
+                </div>            
+            </div>
+        </div>
+
+    </section>
+    <section class="conta">
+        <div class="third">
+            <div class="rs">
+                <h3>Retirement Strategy</h3>
+                <p>Employee Contribution</p>
+            </div>
+            <div class="skill">
+                <div class="jenengskill"></div> 
+                <div class="skill-bar">
+                    <div class="htmlcss">
+                        <div class="bunder1"><span>12%</span></div>
+                    </div>
+                </div>
+                <p class="ra">Retirement Age</p>
+                <div class="skill-bar">
+                    <div class="gorang">
+                        <div class="bunder2"><span>65</span></div>
+                    </div>
+                </div>
+            </div>
+            <hr class="last">
+            <div class="rs">
+                <p>Employer Contribution <span>8.4%</span> </p>
+                <p>Interest Rate <span class="ir">5%</span></p>
+                <button type="button" class="btn btn-primary update">Update <i class="fas fa-angle-right"></i></i></button><br>
+                <a href="#"> View Help Docs </a>
+    
+            </div>
+        </div>
+    </section>
+
+    <section class="fourth">
+        <hr class="vertical">
+        <div class="housing">
+            <h5>Are you Considering a</h5>
+            <h4>Housing Advance ?</h4>
+            <h6>Limited time reduces Interest</h6>
+
+            <a href="#">Learn More  <i class="fas fa-angle-right"></i></a>
+
+        </div>
+    </section>
+    
+    <script src="script.js"></script>       
+    
+</body>
+</html>
